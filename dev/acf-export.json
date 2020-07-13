@@ -8,7 +8,7 @@
                 "label": "Type of Article",
                 "name": "article_type",
                 "type": "select",
-                "instructions": "",
+                "instructions": "Select \"Existing Post\" to create an article component from an existing Post on this site, or select \"Custom\" to create one from scratch.",
                 "required": 1,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -92,7 +92,7 @@
                 "label": "Thumbnail",
                 "name": "thumbnail",
                 "type": "image",
-                "instructions": "",
+                "instructions": "Images must be at least 640px wide.",
                 "required": 0,
                 "conditional_logic": [
                     [
@@ -123,13 +123,13 @@
                 "return_format": "array",
                 "preview_size": "medium",
                 "library": "all",
-                "min_width": "",
+                "min_width": 640,
                 "min_height": "",
                 "min_size": "",
                 "max_width": "",
                 "max_height": "",
                 "max_size": "",
-                "mime_types": ""
+                "mime_types": "jpg,jpeg,png,gif"
             },
             {
                 "key": "field_5ec443bdb99eb",
@@ -137,7 +137,7 @@
                 "name": "article_title",
                 "type": "text",
                 "instructions": "",
-                "required": 1,
+                "required": 0,
                 "conditional_logic": [
                     [
                         {
@@ -205,7 +205,7 @@
                 },
                 "default_value": "",
                 "tabs": "all",
-                "toolbar": "basic",
+                "toolbar": "inline_text",
                 "media_upload": 0,
                 "delay": 0
             },
@@ -215,7 +215,7 @@
                 "name": "links_to",
                 "type": "url",
                 "instructions": "",
-                "required": 0,
+                "required": 1,
                 "conditional_logic": [
                     [
                         {
@@ -352,7 +352,7 @@
                 "label": "Image file",
                 "name": "image_file",
                 "type": "image",
-                "instructions": "",
+                "instructions": "Images must be at least 640px wide.",
                 "required": 1,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -363,24 +363,24 @@
                 "return_format": "array",
                 "preview_size": "medium",
                 "library": "all",
-                "min_width": "",
+                "min_width": 640,
                 "min_height": "",
                 "min_size": "",
                 "max_width": "",
                 "max_height": "",
                 "max_size": "",
-                "mime_types": ""
+                "mime_types": "jpg,jpeg,gif,png"
             },
             {
                 "key": "field_5ec43f8b2dcfc",
                 "label": "Alt text",
                 "name": "alt_text",
                 "type": "text",
-                "instructions": "",
+                "instructions": "Text displayed by email clients that don't download images by default.  If no alt text is provided here, the attachment's alt text will be used (click \"Edit\" button on image to view).",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
-                    "width": "50",
+                    "width": "",
                     "class": "",
                     "id": ""
                 },
@@ -395,11 +395,11 @@
                 "label": "Links to URL",
                 "name": "links_to",
                 "type": "url",
-                "instructions": "",
+                "instructions": "(Optional) URL to link the image to.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
-                    "width": "50",
+                    "width": "",
                     "class": "",
                     "id": ""
                 },
@@ -444,7 +444,7 @@
                 },
                 "default_value": "",
                 "tabs": "all",
-                "toolbar": "basic",
+                "toolbar": "email_content",
                 "media_upload": 0,
                 "delay": 0
             }
@@ -454,7 +454,7 @@
                 {
                     "param": "post_type",
                     "operator": "==",
-                    "value": "ucf-email"
+                    "value": "post"
                 }
             ]
         ],
@@ -507,6 +507,46 @@
         "instruction_placement": "label",
         "hide_on_screen": "",
         "active": false,
+        "description": ""
+    },
+    {
+        "key": "group_5f0c78738a1a7",
+        "title": "Types of Email Content",
+        "fields": [
+            {
+                "key": "field_5f0c787d4779c",
+                "label": "",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "<p><strong>Paragraph<\/strong><\/p>\r\n<p>Basic text content that spans the full width of its container.  Use to add generic text blocks and lists.<\/p>\r\n<p><strong>Full-Width Image<\/strong><\/p>\r\n<p>An image that spans the full width of its container.  Optionally link out to external content.  Can be used for large infographic content, video thumbnails, and more.<\/p>\r\n<p><strong>Article<\/strong><\/p>\r\n<p>Consists of a thumbnail, title, and a deck, which link to some URL.  Choose an existing Post to create an article with automatically, or create a custom article component with fully customizable fields.  Use custom articles for Today stories and videos with descriptions.<\/p>\r\n<p><strong>Article List<\/strong><\/p>\r\n<p>A horizontal list of Articles with a small left-aligned thumbnail.<\/p>\r\n<p><strong>Two Column Row<\/strong><\/p>\r\n<p>A row of two equal-sized columns on desktop email clients.  On mobile email clients, columns collapse and span the full width of the email.  Each column can contain one component each.<\/p>\r\n<p><strong>Divider<\/strong><\/p>\r\n<p>A full-width divider with configurable width and color.<\/p>",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "weekly-email"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "side",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
         "description": ""
     },
     {
