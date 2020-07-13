@@ -19,6 +19,7 @@ function add_options_page() {
 			'page_title' 	  => 'Weekly Email Builder',
 			'menu_title'	  => 'Weekly Email Builder',
 			'menu_slug' 	  => 'weekly-email',
+			'post_id'         => 'options_weekly_email',
 			'capability'	  => 'administrator',
 			'icon_url'        => 'dashicons-email-alt',
 			'redirect'        => false,

@@ -212,7 +212,7 @@
             {
                 "key": "field_5ec4472d390ba",
                 "label": "Links to URL",
-                "name": "links_to_url",
+                "name": "links_to",
                 "type": "url",
                 "instructions": "",
                 "required": 0,
