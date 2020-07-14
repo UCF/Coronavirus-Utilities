@@ -119,7 +119,7 @@ class Weekly_Email_API extends \WP_REST_Controller {
 			|| ( $row['article_type'] === 'post' && $row['content_overrides'] === true )
 		) {
 			if ( ! empty( $row['thumbnail'] ) ) {
-				$row_formatted['thumbnail'] = self::get_image_url( $row['thumbnail'], $thumb_size );
+				$row_formatted['thumbnail'] = self::get_image_url( $row['thumbnail']['ID'], $thumb_size );
 			}
 			if ( ! empty( $row['article_title'] ) ) {
 				$row_formatted['article_title'] = $row['article_title'];
