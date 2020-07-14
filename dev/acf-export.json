@@ -175,7 +175,7 @@
                 "label": "Article deck",
                 "name": "article_deck",
                 "type": "wysiwyg",
-                "instructions": "",
+                "instructions": "Note: multiple lines are not supported (all deck content will be displayed in a single paragraph in the email.)",
                 "required": 0,
                 "conditional_logic": [
                     [
