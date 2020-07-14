@@ -4,6 +4,7 @@
  * within this file.
  */
 namespace Coronavirus\Utils\Includes\APIWeeklyEmail;
+use Coronavirus\Utils\Includes\Post as PostUtils;
 
 
 class Weekly_Email_API extends \WP_REST_Controller {
@@ -108,9 +109,9 @@ class Weekly_Email_API extends \WP_REST_Controller {
 
 		if ( $row['article_type'] === 'post' && ! empty( $row['existing_post'] ) ) {
 			$post = $row['existing_post'];
-			$row_formatted['thumbnail'] = self::get_image_url( get_post_thumbnail_id( $post ), $thumb_size );
+			$row_formatted['thumbnail'] = self::get_image_url( PostUtils\get_thumbnail_id( $post ), $thumb_size );
 			$row_formatted['article_title'] = $post->post_title;
-			$row_formatted['article_deck'] = get_the_excerpt( $post );
+			$row_formatted['article_deck'] = ucfwp_get_excerpt( $post, 30 );
 			$row_formatted['links_to'] = get_permalink( $post );
 		}
 
