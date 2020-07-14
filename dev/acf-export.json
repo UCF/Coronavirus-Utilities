@@ -282,7 +282,7 @@
                     "id": ""
                 },
                 "choices": {
-                    "#eeeeee": "Gray",
+                    "#dddddd": "Gray",
                     "#ffcc00": "Gold",
                     "#000000": "Black"
                 },
