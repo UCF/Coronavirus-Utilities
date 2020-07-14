@@ -16,7 +16,7 @@ namespace Coronavirus\Utils\Includes\Admin;
 function acf_toolbars( $toolbars ) {
 	// "Inline Text"
 	$toolbars['Inline Text'] = array();
-	$toolbars['Inline Text'][1] = array( 'bold', 'italic', 'link', 'unlink', 'undo', 'redo' );
+	$toolbars['Inline Text'][1] = array( 'bold', 'italic', 'undo', 'redo' );
 
 	// "Email Content"
 	$toolbars['Email Content'] = array();
