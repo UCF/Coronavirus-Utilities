@@ -215,7 +215,7 @@
                 "name": "links_to",
                 "type": "url",
                 "instructions": "",
-                "required": 1,
+                "required": 0,
                 "conditional_logic": [
                     [
                         {
@@ -282,12 +282,12 @@
                     "id": ""
                 },
                 "choices": {
-                    "gray": "Gray",
-                    "gold": "Gold",
-                    "black": "Black"
+                    "#eeeeee": "Gray",
+                    "#ffcc00": "Gold",
+                    "#000000": "Black"
                 },
                 "default_value": [
-                    "gold"
+                    "#ffcc00"
                 ],
                 "allow_null": 0,
                 "multiple": 0,
@@ -310,12 +310,12 @@
                     "id": ""
                 },
                 "choices": {
-                    "default": "Default (thin)",
-                    "heavier": "Heavier (3px)",
-                    "heaviest": "Heaviest (5px)"
+                    "1px": "Default (thin)",
+                    "3px": "Heavier (3px)",
+                    "5px": "Heaviest (5px)"
                 },
                 "default_value": [
-                    "heavier"
+                    "3px"
                 ],
                 "allow_null": 0,
                 "multiple": 0,
