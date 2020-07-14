@@ -559,7 +559,7 @@
                 "name": "title",
                 "type": "text",
                 "instructions": "Title displayed at the top of the email.  (This is not the same as the email's subject line.)",
-                "required": 0,
+                "required": 1,
                 "conditional_logic": 0,
                 "wrapper": {
                     "width": "",
