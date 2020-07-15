@@ -48,6 +48,7 @@ class Weekly_Email_API extends \WP_REST_Controller {
 	 */
 	public static function get_email_options( $request ) {
 		$retval = get_fields( 'options_weekly_email' );
+		$retval['header_image']  = self::get_image_url( $retval['header_image'] );
 		$retval['email_content'] = self::format_email_content( $retval['email_content'] );
 
 		return new \WP_REST_Response( $retval, 200 );
