@@ -554,6 +554,46 @@
         "title": "Weekly Email Fields",
         "fields": [
             {
+                "key": "field_5f0f1afe1ad3d",
+                "label": "Header Image",
+                "name": "header_image",
+                "type": "image",
+                "instructions": "The header image to display at the top of the email.  Recommended dimensions: 640x100px",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "id",
+                "preview_size": "medium",
+                "library": "all",
+                "min_width": 640,
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": "jpg,jpeg,png,gif"
+            },
+            {
+                "key": "field_5f0f1b321ad3e",
+                "label": "Header Image Link",
+                "name": "header_image_link",
+                "type": "url",
+                "instructions": "(Optional) If provided, the header image will link to this URL when clicked.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "https:\/\/www.ucf.edu\/coronavirus\/",
+                "placeholder": ""
+            },
+            {
                 "key": "field_5f088e87d99c3",
                 "label": "Title",
                 "name": "title",
