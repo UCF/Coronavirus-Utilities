@@ -21,7 +21,7 @@ function acf_toolbars( $toolbars ) {
 
 	// "Email Content"
 	$toolbars['Email Content'] = array();
-	$toolbars['Email Content'][1] = array( 'bold', 'italic', 'link', 'unlink', 'bullist', 'numlist', 'undo', 'redo' );
+	$toolbars['Email Content'][1] = array( 'formatselect', 'bold', 'italic', 'link', 'unlink', 'bullist', 'numlist', 'undo', 'redo' );
 	return $toolbars;
 }
 
@@ -64,8 +64,9 @@ acf.add_filter('wysiwyg_tinymce_settings', function(mceInit, id, $field){
 
 	// Paragraph field
 	if (fieldID === 'field_5ec43f369be15') {
-		sanitizeHTMLWhitelist = ['a', 'strong', 'em', 'p', 'ul', 'ol', 'li', 'sup', 'sub'];
-		mceInit.valid_elements = '-a[href],-strong/b,-em/i,-p,-ul,-ol,-li,-sup,-sub';
+		sanitizeHTMLWhitelist = ['a', 'strong', 'em', 'p', 'ul', 'ol', 'li', 'sup', 'sub', 'h2', 'h3'];
+		mceInit.valid_elements = '-a[href],-strong/b,-em/i,-p,-ul,-ol,-li,-sup,-sub,-h2,-h3';
+		mceInit.block_formats = 'Paragraph=p;Heading 2=h2;Heading 3=h3';
 	}
 	// Article deck field
 	else if (fieldID === 'field_5ec443edb99ec') {
@@ -73,11 +74,11 @@ acf.add_filter('wysiwyg_tinymce_settings', function(mceInit, id, $field){
 		mceInit.valid_elements = '-a[href],-strong/b,-em/i,-sup,-sub';
 	}
 
-	// Pass pasted content through the sanitizehtml lib.
-	// Some of this is redundant, but configuring TinyMCE's
-	// `valid_elements` doesn't seem to catch all outlying
-	// elements or empty tags.
 	if (fieldID === 'field_5ec43f369be15' || fieldID === 'field_5ec443edb99ec') {
+		// Pass pasted content through the sanitizehtml lib.
+		// Some of this is redundant, but configuring TinyMCE's
+		// `valid_elements` doesn't seem to catch all outlying
+		// elements or empty tags.
 		mceInit.paste_preprocess = function(plugin, args) {
 			var contentClean = sanitizeHtml(args.content, {
 				allowedTags: sanitizeHTMLWhitelist,
