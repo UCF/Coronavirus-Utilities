@@ -81,7 +81,8 @@ function acf_wysiwyg_quicktags_toolbar( $qt_init, $editor_id ) {
 	$current_screen = get_current_screen();
 
 	if (
-		$current_screen->ID === "toplevel_page_$menu_id"
+		$current_screen
+		&& $current_screen->id === "toplevel_page_$menu_id"
 		&& $editor_id === 'acf_content'
 	) {
 		$qt_init['buttons'] = ',';
