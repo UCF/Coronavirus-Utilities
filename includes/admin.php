@@ -44,7 +44,7 @@ acf.add_filter('wysiwyg_tinymce_settings', function(mceInit, id, $field){
 
 	// Paragraph field
 	if (fieldID === 'field_5ec43f369be15') {
-		mceInit.valid_elements = 'a[href],strong/b,em/i,p,ul,ol,li,sup,sub';
+		mceInit.valid_elements = 'a[href],strong/b,em,p,ul,ol,li,sup,sub';
 	}
 	// Article deck field
 	else if (fieldID === 'field_5ec443edb99ec') {
