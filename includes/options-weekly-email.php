@@ -19,6 +19,22 @@ function menu_slug() {
 
 
 /**
+ * Returns the screen ID for the email editor's options page.
+ * This value equates to the `id` property of a `WP_Screen`
+ * object, as well as the `$hook_suffix` param available in the
+ * `admin_enqueue_scripts` hook.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @return string
+ */
+function screen_id() {
+	$menu_slug = menu_slug();
+	return "toplevel_page_$menu_slug";
+}
+
+
+/**
  * Registers the options page for editing the
  * weekly emails.
  *
