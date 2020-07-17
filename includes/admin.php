@@ -3,6 +3,7 @@
  * Admin-related functions/overrides
  */
 namespace Coronavirus\Utils\Includes\Admin;
+use Coronavirus\Utils\Includes\OptionsWeeklyEmail;
 
 
 /**
@@ -59,3 +60,34 @@ acf.add_filter('wysiwyg_tinymce_settings', function(mceInit, id, $field){
 }
 
 add_action( 'acf/input/admin_footer', __NAMESPACE__ . '\acf_configure_tinymce' );
+
+
+/**
+ * Remove plaintext editor's quicktags toolbar on
+ * all ACF-generated WYSIWYG fields in the email editor
+ * interface.
+ *
+ * NOTE: We narrow down this logic by the current screen because
+ * we don't have access to per-field editor options for quicktags.
+ *
+ * @since 1.0.0
+ * @author Jo Dickson
+ * @param array $qt_init Quicktags toolbar options
+ * @param string $editor_id Type of editor (e.g. "content" or "acf_content")
+ * @return array Modified quicktags options
+ */
+function acf_wysiwyg_quicktags_toolbar( $qt_init, $editor_id ) {
+	$menu_id        = OptionsWeeklyEmail\menu_slug();
+	$current_screen = get_current_screen();
+
+	if (
+		$current_screen->ID === "toplevel_page_$menu_id"
+		&& $editor_id === 'acf_content'
+	) {
+		$qt_init['buttons'] = ',';
+	}
+
+	return $qt_init;
+}
+
+add_filter( 'quicktags_settings', __NAMESPACE__ . '\acf_wysiwyg_quicktags_toolbar', 10, 2 );
