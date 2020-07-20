@@ -29,24 +29,6 @@ add_filter( 'acf/fields/wysiwyg/toolbars', __NAMESPACE__ . '\acf_toolbars' );
 
 
 /**
- * Conditionally enqueues the sanitize-html lib on the
- * weekly email editing screen.
- *
- * @since 1.0.0
- * @author Jo Dickson
- * @param string $hook Current admin page
- * @return void
- */
-function admin_enqueue_sanitizehtml( $hook ) {
-	if ( $hook === OptionsWeeklyEmail\screen_id() ) {
-		wp_enqueue_script( 'coronavirus_utils__sanitizehtml', CORONAVIRUS_UTILS__PLUGIN_JS_URL . 'sanitize-html.min.js' );
-	}
-}
-
-add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\admin_enqueue_sanitizehtml' );
-
-
-/**
  * Update TinyMCE settings for ACF WYSIWYG fields.
  *
  * @see https://www.tiny.cloud/docs-3x/reference/configuration/Configuration3x@valid_elements/
