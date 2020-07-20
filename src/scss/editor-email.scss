@@ -1,0 +1,75 @@
+// sass-lint:disable no-url-protocols
+@font-face {
+  font-family: 'UCF-Sans-Serif-Alt';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://s3.amazonaws.com/web.ucf.edu/email/common-assets/fonts/ucfsansserifalt-medium-webfont.woff2') format('woff2'),
+  url('https://s3.amazonaws.com/web.ucf.edu/email/common-assets/fonts/ucfsansserifalt-medium-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'UCF-Sans-Serif-Alt';
+  font-style: normal;
+  font-weight: 500;
+  src: url('https://s3.amazonaws.com/web.ucf.edu/email/common-assets/fonts/ucfsansserifalt-semibold-webfont.woff2') format('woff2'),
+  url('https://s3.amazonaws.com/web.ucf.edu/email/common-assets/fonts/ucfsansserifalt-semibold-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'UCF-Sans-Serif-Alt';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://s3.amazonaws.com/web.ucf.edu/email/common-assets/fonts/ucfsansserifalt-bold-webfont.woff2') format('woff2'),
+  url('https://s3.amazonaws.com/web.ucf.edu/email/common-assets/fonts/ucfsansserifalt-bold-webfont.woff') format('woff');
+}
+// sass-lint:enable no-url-protocols
+
+
+// sass-lint:disable no-ids class-name-format
+#tinymce.acf_content {
+  color: #000;
+  font-family: 'UCF-Sans-Serif-Alt', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 15px;
+
+  @media (min-width: 664px) {
+    margin: 30px 38px;
+    max-width: 564px;
+  }
+
+  a {
+    color: #069;
+  }
+
+  p {
+    margin: 0 0 16px;
+  }
+
+  ul,
+  ol {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 16px;
+    padding-top: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  h3 {
+    font-size: 18px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+}
+// sass-lint:enable no-ids

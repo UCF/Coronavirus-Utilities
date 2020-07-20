@@ -17,11 +17,14 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'CORONAVIRUS_UTILS__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CORONAVIRUS_UTILS__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'CORONAVIRUS_UTILS__PLUGIN_FILE', __FILE__ );
 define( 'CORONAVIRUS_UTILS__PLUGIN_STATIC_URL', CORONAVIRUS_UTILS__PLUGIN_URL . 'static/' );
+define( 'CORONAVIRUS_UTILS__PLUGIN_CSS_URL', CORONAVIRUS_UTILS__PLUGIN_STATIC_URL . 'css/' );
 define( 'CORONAVIRUS_UTILS__PLUGIN_JS_URL', CORONAVIRUS_UTILS__PLUGIN_STATIC_URL . 'js/' );
 
 
 require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/admin.php';
+require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/meta.php';
 require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/post-functions.php';
 require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/options-weekly-email.php';
 require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/api-weekly-email.php';
