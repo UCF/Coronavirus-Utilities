@@ -7,6 +7,69 @@ use Coronavirus\Utils\Includes\OptionsWeeklyEmail;
 
 
 /**
+ *
+ */
+function is_local_env() {
+	// Custom constant used by UCF Webcom for defining a local
+	// development environment.
+	// This constant is intentionally separate from WP_DEBUG
+	// to distinguish between hosted DEV environments that have
+	// debug mode enabled.
+	if ( defined( 'WP_LOCAL_DEV' ) ) {
+		return WP_LOCAL_DEV;
+	}
+	else {
+		return false;
+	}
+}
+
+
+/**
+ *
+ */
+function acf_register_fields() {
+	if ( ! is_local_env() ) {
+		// Get the current plugin version number
+		$plugin         = get_plugin_data( CORONAVIRUS_UTILS__PLUGIN_FILE );
+		$plugin_version = '';
+		if ( isset( $plugin['Version'] ) ) {
+			$plugin_version = $plugin['Version'];
+		}
+		else {
+			$plugin_version = date( 'Ymd' );
+		}
+
+		// Retrieve our ACF export data from an existing option,
+		// or directly from the acf-export.json file in the plugin
+		// repo if an existing option isn't already set/if the
+		// option value is stale.
+		$acf_export_data = get_option( 'coronavirus_utils__acf_config' );
+		if (
+			! $acf_export_data
+			|| (
+				isset( $acf_export_data['version'] )
+				&& $acf_export_data['version'] !== $plugin_version
+			)
+		) {
+			$acf_json = json_decode( file_get_contents( CORONAVIRUS_UTILS__PLUGIN_DIR . '/dev/acf-export.json' ) ?: array(), true );
+			$acf_export_data = array(
+				'version'      => $plugin_version,
+				'field_groups' => $acf_json
+			);
+			update_option( 'coronavirus_utils__acf_config', $acf_export_data );
+		}
+
+		// Register the field groups
+		foreach ( $acf_export_data['field_groups'] as $field_group ) {
+			acf_add_local_field_group( $field_group );
+		}
+	}
+}
+
+add_action( 'init', __NAMESPACE__ . '\acf_register_fields' );
+
+
+/**
  * Defines custom ACF WYSIWYG field toolbars.
  *
  * @since 1.0.0
