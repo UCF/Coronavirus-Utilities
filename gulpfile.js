@@ -3,14 +3,9 @@ const browserSync  = require('browser-sync').create();
 const gulp         = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS     = require('gulp-clean-css');
-const include      = require('gulp-include');
-const eslint       = require('gulp-eslint');
-const isFixed      = require('gulp-eslint-if-fixed');
-const babel        = require('gulp-babel');
 const rename       = require('gulp-rename');
 const sass         = require('gulp-sass');
 const sassLint     = require('gulp-sass-lint');
-const uglify       = require('gulp-uglify');
 const readme       = require('gulp-readme-to-markdown');
 const merge        = require('merge');
 
@@ -69,35 +64,6 @@ function buildCSS(src, dest) {
     .pipe(gulp.dest(dest));
 }
 
-// Base JS linting function (with eslint). Fixes problems in-place.
-function lintJS(src, dest) {
-  dest = dest || config.src.jsPath;
-
-  return gulp.src(src)
-    .pipe(eslint({
-      fix: true
-    }))
-    .pipe(eslint.format())
-    .pipe(isFixed(dest));
-}
-
-// Base JS compile function
-function buildJS(src, dest) {
-  dest = dest || config.dist.jsPath;
-
-  return gulp.src(src)
-    .pipe(include({
-      includePaths: [config.packagesPath, config.src.jsPath]
-    }))
-    .on('error', console.log) // eslint-disable-line no-console
-    .pipe(babel())
-    .pipe(uglify())
-    .pipe(rename({
-      extname: '.min.js'
-    }))
-    .pipe(gulp.dest(dest));
-}
-
 // BrowserSync reload function
 function serverReload(done) {
   if (config.sync) {
@@ -120,6 +86,23 @@ function serverServe(done) {
 
 
 //
+// Installation of components/dependencies
+//
+
+// Copy sanitize-html script
+gulp.task('move-components-sanitizehtml', (done) => {
+  gulp.src([`${config.packagesPath}/sanitize-html/dist/sanitize-html.min.js`])
+    .pipe(gulp.dest(config.dist.jsPath));
+  done();
+});
+
+// Run all component-related tasks
+gulp.task('components', gulp.parallel(
+  'move-components-sanitizehtml'
+));
+
+
+//
 // CSS
 //
 
@@ -128,31 +111,13 @@ gulp.task('scss-lint-plugin', () => {
   return lintSCSS(`${config.src.scssPath}/*.scss`);
 });
 
-// Compile plugin stylesheet
-gulp.task('scss-build-plugin', () => {
-  return buildCSS(`${config.src.scssPath}/style.scss`);
+// Compile email editor WYSIWYGs stylesheet
+gulp.task('scss-build-email-editor-styles', () => {
+  return buildCSS(`${config.src.scssPath}/editor-email.scss`);
 });
 
 // All plugin css-related tasks
-gulp.task('css', gulp.series('scss-lint-plugin', 'scss-build-plugin'));
-
-
-//
-// JavaScript
-//
-
-// Run eslint on js files in src.jsPath
-gulp.task('es-lint-plugin', () => {
-  return lintJS([`${config.src.jsPath}/*.js`], config.src.jsPath);
-});
-
-// Concat and uglify js files through babel
-gulp.task('js-build-plugin', () => {
-  return buildJS(`${config.src.jsPath}/script.js`, config.dist.jsPath);
-});
-
-// All js-related tasks
-gulp.task('js', gulp.series('es-lint-plugin', 'js-build-plugin'));
+gulp.task('css', gulp.series('scss-lint-plugin', 'scss-build-email-editor-styles'));
 
 
 //
@@ -176,8 +141,6 @@ gulp.task('readme', () => {
 gulp.task('watch', (done) => {
   serverServe(done);
 
-  gulp.watch(`${config.src.scssPath}/**/*.scss`, gulp.series('css', serverReload));
-  gulp.watch(`${config.src.jsPath}/**/*.js`, gulp.series('js', serverReload));
   gulp.watch('./**/*.php', gulp.series(serverReload));
 });
 
@@ -185,4 +148,4 @@ gulp.task('watch', (done) => {
 //
 // Default task
 //
-gulp.task('default', gulp.series('css', 'js', 'readme'));
+gulp.task('default', gulp.series('components', 'css', 'readme'));
