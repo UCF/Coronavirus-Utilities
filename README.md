@@ -15,6 +15,10 @@ Head over to the [Coronavirus Utilities wiki](https://github.com/UCF/Coronavirus
 
 ## Changelog ##
 
+### 1.0.1 ###
+Bug fixes:
+* Fixed styling for nested list items in WYSIWYG fields in the coronavirus email builder.
+
 ### 1.0.0 ###
 * Initial release
 
