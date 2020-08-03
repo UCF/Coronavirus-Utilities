@@ -2,7 +2,7 @@
 Contributors: ucfwebcom
 Requires at least: 5.3
 Tested up to: 5.3
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
@@ -21,6 +21,10 @@ Head over to the [Coronavirus Utilities wiki](https://github.com/UCF/Coronavirus
 
 
 == Changelog ==
+
+= 1.0.1 =
+Bug fixes:
+* Fixed styling for nested list items in WYSIWYG fields in the coronavirus email builder.
 
 = 1.0.0 =
 * Initial release
