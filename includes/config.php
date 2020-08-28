@@ -56,3 +56,20 @@ function define_customizer_fields( $wp_customize ) {
 }
 
 add_action( 'customize_register', __NAMESPACE__ . '\define_customizer_fields' );
+
+
+/**
+ * Returns the URL for the coronavirus email relative
+ * to this site's environment.
+ *
+ * @since 1.1.0
+ * @author Jo Dickson
+ * @return string
+ */
+function get_gmucf_email_url() {
+	$retval = CORONAVIRUS_UTILS__DEFAULT_GMUCF_URL;
+	if ( defined( 'CORONAVIRUS_THEME_CUSTOMIZER_PREFIX' ) ) {
+		$retval = get_option( CORONAVIRUS_THEME_CUSTOMIZER_PREFIX . 'email_gmucf_url', CORONAVIRUS_UTILS__DEFAULT_GMUCF_URL );
+	}
+	return $retval;
+}

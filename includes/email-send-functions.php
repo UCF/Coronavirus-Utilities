@@ -4,6 +4,7 @@
  * sending weekly email markup
  */
 namespace Coronavirus\Utils\Includes\EmailSend;
+use Coronavirus\Utils\Includes\Config;
 
 
 /**
@@ -68,7 +69,16 @@ function content_type( $content_type ) {
  * @return string
  */
 function retrieve_email_markup() {
-	return 'TODO';
+	$url           = Config\get_gmucf_email_url();
+	$response      = wp_remote_get( $url, array( 'timeout' => 15 ) );
+	$response_code = wp_remote_retrieve_response_code( $response );
+	$result        = false;
+
+	if ( is_array( $response ) && is_int( $response_code ) && $response_code < 400 ) {
+		$result = wp_remote_retrieve_body( $response );
+	}
+
+	return $result;
 }
 
 

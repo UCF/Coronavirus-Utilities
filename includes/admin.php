@@ -3,6 +3,7 @@
  * Admin-related functions/overrides
  */
 namespace Coronavirus\Utils\Includes\Admin;
+use Coronavirus\Utils\Includes\Config;
 use Coronavirus\Utils\Includes\OptionsWeeklyEmail;
 
 
@@ -133,7 +134,7 @@ add_filter( 'quicktags_settings', __NAMESPACE__ . '\acf_wysiwyg_quicktags_toolba
 function insert_instant_send_js() {
 	$menu_id        = OptionsWeeklyEmail\screen_id();
 	$current_screen = get_current_screen();
-	$gmucf_url      = get_option( CORONAVIRUS_THEME_CUSTOMIZER_PREFIX . 'email_gmucf_url', CORONAVIRUS_UTILS__DEFAULT_GMUCF_URL );
+	$gmucf_url      = Config\get_gmucf_email_url();
 
 	if ( ! $current_screen || $current_screen->id !== $menu_id ) return;
 ?>
@@ -142,9 +143,13 @@ function insert_instant_send_js() {
 		var data = {
 			action: 'instant-send'
 		};
-		var gmucf_url = '<?php echo $gmucf_url; ?>';
+		var gmucfUrl = '<?php echo $gmucf_url; ?>';
+		var $sendBtn = $('#instant-send');
+		var $spinner = $('<img src="<?php echo admin_url( '/images/wpspin_light.gif' ); ?>" alt="Processing..." style="margin-left: 6px; display: inline-block; vertical-align: sub;">');
 
 		var onPostSuccess = function(response) {
+			$spinner.remove();
+
 			var $markup = '';
 			if ( response.success === true ) {
 				$markup = $(
@@ -163,7 +168,8 @@ function insert_instant_send_js() {
 			$markup.insertAfter('.acf-settings-wrap > h1');
 		};
 
-		$('#instant-send').on('click', function() {
+		$sendBtn.on('click', function() {
+			$sendBtn.append($spinner);
 			$.post(
 				ajaxurl,
 				data,
@@ -173,8 +179,7 @@ function insert_instant_send_js() {
 		});
 
 		$(document).on('ready', function() {
-			console.log('hello?');
-			$('#preview-in-browser').attr('href', gmucf_url);
+			$('#preview-in-browser').attr('href', gmucfUrl);
 		});
 	}(jQuery));
 	</script>
