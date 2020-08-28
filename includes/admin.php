@@ -124,7 +124,7 @@ add_filter( 'quicktags_settings', __NAMESPACE__ . '\acf_wysiwyg_quicktags_toolba
 
 /**
  * Defines inline javascript necessary for the
- * coronavirus email's Send Preview button to function.
+ * coronavirus email's Preview Weekly Email tools to function.
  *
  * @since 1.1.0
  * @author Jim Barnes
@@ -133,6 +133,7 @@ add_filter( 'quicktags_settings', __NAMESPACE__ . '\acf_wysiwyg_quicktags_toolba
 function insert_instant_send_js() {
 	$menu_id        = OptionsWeeklyEmail\screen_id();
 	$current_screen = get_current_screen();
+	$gmucf_url      = get_option( CORONAVIRUS_THEME_CUSTOMIZER_PREFIX . 'email_gmucf_url', CORONAVIRUS_UTILS__DEFAULT_GMUCF_URL );
 
 	if ( ! $current_screen || $current_screen->id !== $menu_id ) return;
 ?>
@@ -141,6 +142,7 @@ function insert_instant_send_js() {
 		var data = {
 			action: 'instant-send'
 		};
+		var gmucf_url = '<?php echo $gmucf_url; ?>';
 
 		var onPostSuccess = function(response) {
 			var $markup = '';
@@ -168,6 +170,11 @@ function insert_instant_send_js() {
 				onPostSuccess,
 				'json'
 			);
+		});
+
+		$(document).on('ready', function() {
+			console.log('hello?');
+			$('#preview-in-browser').attr('href', gmucf_url);
 		});
 	}(jQuery));
 	</script>

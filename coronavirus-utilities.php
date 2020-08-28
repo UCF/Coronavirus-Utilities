@@ -22,7 +22,10 @@ define( 'CORONAVIRUS_UTILS__PLUGIN_STATIC_URL', CORONAVIRUS_UTILS__PLUGIN_URL . 
 define( 'CORONAVIRUS_UTILS__PLUGIN_CSS_URL', CORONAVIRUS_UTILS__PLUGIN_STATIC_URL . 'css/' );
 define( 'CORONAVIRUS_UTILS__PLUGIN_JS_URL', CORONAVIRUS_UTILS__PLUGIN_STATIC_URL . 'js/' );
 
+define( 'CORONAVIRUS_UTILS__DEFAULT_GMUCF_URL', 'https://gmucf.smca.ucf.edu/coronavirus/mail/?no_cache=true' );
 
+
+require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/config.php';
 require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/admin.php';
 require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/meta.php';
 require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/post-functions.php';

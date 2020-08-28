@@ -526,7 +526,7 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "<p style=\"margin-top: 0;\">Click the button below to open the email in a new tab. This page must be updated in order to see the latest changes.<\/p>\r\n<a class=\"button button-secondary button-large\" href=\"https:\/\/gmucf.smca.ucf.edu\/coronavirus\/mail\/?no_cache=true\" target=\"_blank\">Preview Email<\/a>",
+                "message": "<p style=\"margin-top: 0;\">Click the button below to open the email in a new tab. This page must be updated in order to see the latest changes.<\/p>\r\n<a id=\"preview-in-browser\" class=\"button button-secondary button-large\" href=\"#\" target=\"_blank\">Preview Email<\/a>",
                 "new_lines": "wpautop",
                 "esc_html": 0
             },
