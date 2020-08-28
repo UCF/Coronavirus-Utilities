@@ -28,3 +28,4 @@ require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/meta.php';
 require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/post-functions.php';
 require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/options-weekly-email.php';
 require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/api-weekly-email.php';
+require_once CORONAVIRUS_UTILS__PLUGIN_DIR . 'includes/email-send-functions.php';

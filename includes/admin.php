@@ -120,3 +120,58 @@ function acf_wysiwyg_quicktags_toolbar( $qt_init, $editor_id ) {
 }
 
 add_filter( 'quicktags_settings', __NAMESPACE__ . '\acf_wysiwyg_quicktags_toolbar', 10, 2 );
+
+
+/**
+ * Defines inline javascript necessary for the
+ * coronavirus email's Send Preview button to function.
+ *
+ * @since 1.1.0
+ * @author Jim Barnes
+ * @return void
+ */
+function insert_instant_send_js() {
+	$menu_id        = OptionsWeeklyEmail\screen_id();
+	$current_screen = get_current_screen();
+
+	if ( ! $current_screen || $current_screen->id !== $menu_id ) return;
+?>
+	<script>
+	(function($) {
+		var data = {
+			action: 'instant-send'
+		};
+
+		var onPostSuccess = function(response) {
+			var $markup = '';
+			if ( response.success === true ) {
+				$markup = $(
+					'<div class="acf-admin-notice notice notice-success">' +
+						'<p>Preview of email sent.</p>' +
+					'</div>'
+				);
+			} else {
+				$markup = $(
+					'<div class="acf-admin-notice notice notice-error">' +
+						'<p>There was a problem sending the preview.</p>' +
+					'</div>'
+				);
+			}
+
+			$markup.insertAfter('.acf-settings-wrap > h1');
+		};
+
+		$('#instant-send').on('click', function() {
+			$.post(
+				ajaxurl,
+				data,
+				onPostSuccess,
+				'json'
+			);
+		});
+	}(jQuery));
+	</script>
+<?php
+}
+
+add_action( 'admin_footer', __NAMESPACE__ . '\insert_instant_send_js', 10, 1 );
