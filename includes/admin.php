@@ -3,6 +3,7 @@
  * Admin-related functions/overrides
  */
 namespace Coronavirus\Utils\Includes\Admin;
+use Coronavirus\Utils\Includes\Config;
 use Coronavirus\Utils\Includes\OptionsWeeklyEmail;
 
 
@@ -120,3 +121,69 @@ function acf_wysiwyg_quicktags_toolbar( $qt_init, $editor_id ) {
 }
 
 add_filter( 'quicktags_settings', __NAMESPACE__ . '\acf_wysiwyg_quicktags_toolbar', 10, 2 );
+
+
+/**
+ * Defines inline javascript necessary for the
+ * coronavirus email's Preview Weekly Email tools to function.
+ *
+ * @since 1.1.0
+ * @author Jim Barnes
+ * @return void
+ */
+function insert_instant_send_js() {
+	$menu_id        = OptionsWeeklyEmail\screen_id();
+	$current_screen = get_current_screen();
+	$gmucf_url      = Config\get_gmucf_email_url();
+
+	if ( ! $current_screen || $current_screen->id !== $menu_id ) return;
+?>
+	<script>
+	(function($) {
+		var data = {
+			action: 'instant-send'
+		};
+		var gmucfUrl = '<?php echo $gmucf_url; ?>';
+		var $sendBtn = $('#instant-send');
+		var $spinner = $('<img src="<?php echo admin_url( '/images/wpspin_light.gif' ); ?>" alt="Processing..." style="margin-left: 6px; display: inline-block; vertical-align: sub;">');
+
+		var onPostSuccess = function(response) {
+			$spinner.remove();
+
+			var $markup = '';
+			if ( response.success === true ) {
+				$markup = $(
+					'<div class="acf-admin-notice notice notice-success">' +
+						'<p>Preview of email sent.</p>' +
+					'</div>'
+				);
+			} else {
+				$markup = $(
+					'<div class="acf-admin-notice notice notice-error">' +
+						'<p>There was a problem sending the preview.</p>' +
+					'</div>'
+				);
+			}
+
+			$markup.insertAfter('.acf-settings-wrap > h1');
+		};
+
+		$sendBtn.on('click', function() {
+			$sendBtn.append($spinner);
+			$.post(
+				ajaxurl,
+				data,
+				onPostSuccess,
+				'json'
+			);
+		});
+
+		$(document).on('ready', function() {
+			$('#preview-in-browser').attr('href', gmucfUrl);
+		});
+	}(jQuery));
+	</script>
+<?php
+}
+
+add_action( 'admin_footer', __NAMESPACE__ . '\insert_instant_send_js', 10, 1 );

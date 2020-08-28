@@ -515,7 +515,7 @@
         "fields": [
             {
                 "key": "field_5f0e1af5b3f65",
-                "label": "",
+                "label": "View in Browser",
                 "name": "",
                 "type": "message",
                 "instructions": "",
@@ -526,9 +526,45 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "<p style=\"margin-top: 0;\">Click the button below to open the email in a new tab. This page must be updated in order to see the latest changes.<\/p>\r\n<a href=\"https:\/\/gmucf.smca.ucf.edu\/coronavirus\/mail\/?no_cache=true\" target=\"_blank\" style=\"background: #fc0; padding: 8px; color: #000; text-decoration: none; font-weight: bold; display: block; text-align: center;\">Preview Email<\/a>",
+                "message": "<p style=\"margin-top: 0;\">Click the button below to open the email in a new tab. This page must be updated in order to see the latest changes.<\/p>\r\n<a id=\"preview-in-browser\" class=\"button button-secondary button-large\" href=\"#\" target=\"_blank\">Preview Email<\/a>",
                 "new_lines": "wpautop",
                 "esc_html": 0
+            },
+            {
+                "key": "field_5f494cca5afce",
+                "label": "Send a Test",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "<p style=\"margin-top: 0;\">Click the button below to send a test of this email to the Preview Recipients defined below. This page must be updated in order for the latest content to be sent.<\/p>\r\n<a href=\"#send-preview\" id=\"instant-send\" class=\"button button-primary button-large\">Send Test<\/a>",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_5f494c975afcd",
+                "label": "Preview Recipients",
+                "name": "preview_recipients",
+                "type": "textarea",
+                "instructions": "Enter a comma-separated list of email addresses to send tests to.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": "",
+                "new_lines": ""
             }
         ],
         "location": [
