@@ -8,7 +8,10 @@ namespace Coronavirus\Utils\Includes\Config;
 
 define( 'CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX', defined( 'CORONAVIRUS_THEME_CUSTOMIZER_PREFIX' ) ? CORONAVIRUS_THEME_CUSTOMIZER_PREFIX : 'ucfcoronavirus_' );
 define( 'CORONAVIRUS_UTILS__CUSTOMIZER_DEFAULTS', serialize( array(
-	'email_gmucf_url' => 'https://gmucf.smca.ucf.edu/coronavirus/mail/?no_cache=true',
+	'email_gmucf_url'          => 'https://gmucf.smca.ucf.edu/coronavirus/mail/?no_cache=true',
+	'email_test_subject_line'  => 'In Case You Missed It: UCF COVID-19 Updates',
+	'email_test_from_address'  => 'feedback@ucf.edu',
+	'email_test_from_friendly' => 'University of Central Florida'
 ) ) );
 
 
@@ -120,6 +123,60 @@ function define_customizer_fields( $wp_customize ) {
 			'type'        => 'url',
 			'label'       => 'Coronavirus Email on GMUCF',
 			'description' => 'URL to the generated Coronavirus email markup on GMUCF on this environment.',
+			'section'     => CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'emails'
+		)
+	);
+
+	$wp_customize->add_setting(
+		CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_subject_line',
+		array(
+			'default' => get_option_default( 'email_test_subject_line' ),
+			'type'    => 'option'
+		)
+	);
+
+	$wp_customize->add_control(
+		CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_subject_line',
+		array(
+			'type'        => 'text',
+			'label'       => 'Test Email Subject Line',
+			'description' => 'The subject line to use on Coronavirus email tests.',
+			'section'     => CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'emails'
+		)
+	);
+
+	$wp_customize->add_setting(
+		CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_from_address',
+		array(
+			'default' => get_option_default( 'email_test_from_address' ),
+			'type'    => 'option'
+		)
+	);
+
+	$wp_customize->add_control(
+		CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_from_address',
+		array(
+			'type'        => 'text',
+			'label'       => 'Test Email From Address',
+			'description' => 'The "from" email address to use on Coronavirus email tests.',
+			'section'     => CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'emails'
+		)
+	);
+
+	$wp_customize->add_setting(
+		CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_from_friendly',
+		array(
+			'default' => get_option_default( 'email_test_from_friendly' ),
+			'type'    => 'option'
+		)
+	);
+
+	$wp_customize->add_control(
+		CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_from_friendly',
+		array(
+			'type'        => 'text',
+			'label'       => 'Test Email From Friendly Name',
+			'description' => 'The friendly "from" name to use on Coronavirus email tests.',
 			'section'     => CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'emails'
 		)
 	);

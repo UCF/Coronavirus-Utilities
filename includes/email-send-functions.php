@@ -122,9 +122,9 @@ function instant_send() {
 	}
 
 	// Get subject line and from details
-	$subject       = 'In Case You Missed It: UCF COVID-19 Updates';
-	$from_email    = 'feedback@ucf.edu';
-	$from_friendly = 'University of Central Florida';
+	$subject       = get_option( CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_subject_line' );
+	$from_email    = get_option( CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_from_address' );
+	$from_friendly = get_option( CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_from_friendly' );
 
 	if ( $subject ) {
 		$args['subject'] = "*** PREVIEW *** $subject *** PREVIEW ***";
