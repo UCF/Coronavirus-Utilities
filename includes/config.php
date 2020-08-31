@@ -40,6 +40,9 @@ function init() {
 	// Enforce default option values when `get_option()` is called.
 	$options = unserialize( CORONAVIRUS_UTILS__CUSTOMIZER_DEFAULTS );
 	foreach ( $options as $option_name => $option_default ) {
+		// Apply our plugin prefix to the option name:
+		$option_name = CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . $option_name;
+
 		// Enforce a default value for options we've defined
 		// defaults for:
 		add_filter( "default_option_$option_name", function( $get_option_default, $option, $passed_default ) use ( $option_default ) {
