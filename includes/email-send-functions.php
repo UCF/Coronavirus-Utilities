@@ -69,7 +69,7 @@ function content_type( $content_type ) {
  * @return string
  */
 function retrieve_email_markup() {
-	$url           = Config\get_gmucf_email_url();
+	$url           = get_option( CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_gmucf_url' );
 	$response      = wp_remote_get( $url, array( 'timeout' => 15 ) );
 	$response_code = wp_remote_retrieve_response_code( $response );
 	$result        = false;
