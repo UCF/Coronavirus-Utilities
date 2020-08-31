@@ -145,7 +145,7 @@ function instant_send() {
  * The ajax handler for coronavirus email instant sends.
  *
  * @author Jim Barnes
- * @since 1.10
+ * @since 1.1.0
  */
 function instant_send_ajax() {
 	$send = instant_send();
