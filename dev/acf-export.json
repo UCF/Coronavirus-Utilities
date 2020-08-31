@@ -543,7 +543,7 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "<p style=\"margin-top: 0;\">Click the button below to send a test of this email to the Preview Recipients defined below. This page must be updated in order for the latest content to be sent.<\/p>\r\n<a href=\"#send-preview\" id=\"instant-send\" class=\"button button-primary button-large\">Send Test<\/a>",
+                "message": "<p style=\"margin-top: 0;\">Click the button below to send a test of this email to the Preview Recipients defined below. <strong>Make sure you've saved your changes before clicking this button<\/strong> to ensure the latest email content is sent and that the preview recipient list is up-to-date.<\/p>\r\n<a href=\"#send-preview\" id=\"instant-send\" class=\"button button-primary button-large\">Send Test<\/a>",
                 "new_lines": "wpautop",
                 "esc_html": 0
             },
