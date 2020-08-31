@@ -69,7 +69,7 @@ function content_type( $content_type ) {
  * @return string
  */
 function retrieve_email_markup() {
-	$url           = Config\get_gmucf_email_url();
+	$url           = get_option( CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_gmucf_url' );
 	$response      = wp_remote_get( $url, array( 'timeout' => 15 ) );
 	$response_code = wp_remote_retrieve_response_code( $response );
 	$result        = false;
@@ -122,9 +122,9 @@ function instant_send() {
 	}
 
 	// Get subject line and from details
-	$subject       = 'In Case You Missed It: UCF COVID-19 Updates';
-	$from_email    = 'feedback@ucf.edu';
-	$from_friendly = 'University of Central Florida';
+	$subject       = get_option( CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_subject_line' );
+	$from_email    = get_option( CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_from_address' );
+	$from_friendly = get_option( CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_from_friendly' );
 
 	if ( $subject ) {
 		$args['subject'] = "*** PREVIEW *** $subject *** PREVIEW ***";
@@ -145,7 +145,7 @@ function instant_send() {
  * The ajax handler for coronavirus email instant sends.
  *
  * @author Jim Barnes
- * @since 1.10
+ * @since 1.1.0
  */
 function instant_send_ajax() {
 	$send = instant_send();
