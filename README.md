@@ -30,7 +30,7 @@ n/a
 
 ## Development ##
 
-Note that compiled, minified css and js {{edit this list if the plugin doesn't include css/js!}} files are included within the repo.  Changes to these files should be tracked via git (so that users installing the plugin using traditional installation methods will have a working plugin out-of-the-box.)
+Note that compiled, minified css files are included within the repo.  Changes to these files should be tracked via git (so that users installing the plugin using traditional installation methods will have a working plugin out-of-the-box.)
 
 [Enabling debug mode](https://codex.wordpress.org/Debugging_in_WordPress) in your `wp-config.php` file is recommended during development to help catch warnings and bugs.
 
@@ -47,10 +47,10 @@ Note that compiled, minified css and js {{edit this list if the plugin doesn't i
 
     The full list of modifiable config values can be viewed in `gulpfile.js` (see `config` variable).
 3. Run `gulp default` to process front-end assets.
-4. If you haven't already done so, create a new WordPress site on your development environment to test this plugin against{{IF THIS PLUGIN REQUIRES OTHER PLUGINS:}}, and [install and activate all plugin dependencies](https://github.com/UCF/Coronavirus-Utilities/wiki/Installation#installation-requirements){{ENDIF}}.
+4. If you haven't already done so, create a new WordPress site on your development environment to test this plugin against, and [install and activate all plugin dependencies](https://github.com/UCF/Coronavirus-Utilities/wiki/Installation#installation-requirements).
 5. Activate this plugin on your development WordPress site.
-6. Configure plugin settings from the WordPress admin under "{{Your plugin's admin menu label}}".
-7. Run `gulp watch` to continuously watch changes to scss and js files.{{edit this list if the plugin doesn't include css/js!}}  If you enabled BrowserSync in `gulp-config.json`, it will also reload your browser when plugin files change.
+6. Configure plugin settings from the WordPress admin via the Customizer (Appearance > Customize > Weekly Emails).
+7. Run `gulp watch` to continuously watch changes to scss files.  If you enabled BrowserSync in `gulp-config.json`, it will also reload your browser when plugin files change.
 
 ### Other Notes ###
 * This plugin's README.md file is automatically generated. Please only make modifications to the README.txt file, and make sure the `gulp readme` command has been run before committing README changes.  See the [contributing guidelines](https://github.com/UCF/Coronavirus-Utilities/blob/master/CONTRIBUTING.md) for more information.
