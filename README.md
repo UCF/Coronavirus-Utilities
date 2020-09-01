@@ -15,6 +15,11 @@ Head over to the [Coronavirus Utilities wiki](https://github.com/UCF/Coronavirus
 
 ## Changelog ##
 
+### 1.1.0 ###
+Enhancements:
+* Added the ability to send weekly email tests from the email builder directly.
+* Added Customizer options for changing the subject line and "from" details for email tests.
+
 ### 1.0.1 ###
 Bug fixes:
 * Fixed styling for nested list items in WYSIWYG fields in the coronavirus email builder.
