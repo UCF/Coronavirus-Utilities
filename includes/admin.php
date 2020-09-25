@@ -125,7 +125,7 @@ add_filter( 'quicktags_settings', __NAMESPACE__ . '\acf_wysiwyg_quicktags_toolba
 
 /**
  * Defines inline javascript necessary for the
- * coronavirus email's Preview Weekly Email tools to function.
+ * coronavirus email's testing tools to function.
  *
  * @since 1.1.0
  * @author Jim Barnes
@@ -154,13 +154,13 @@ function insert_instant_send_js() {
 			if ( response.success === true ) {
 				$markup = $(
 					'<div class="acf-admin-notice notice notice-success">' +
-						'<p>Preview of email sent.</p>' +
+						'<p>Email test sent.</p>' +
 					'</div>'
 				);
 			} else {
 				$markup = $(
 					'<div class="acf-admin-notice notice notice-error">' +
-						'<p>There was a problem sending the preview.</p>' +
+						'<p>There was a problem sending the email test.</p>' +
 					'</div>'
 				);
 			}

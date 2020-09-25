@@ -16,11 +16,11 @@ use Coronavirus\Utils\Includes\Config;
  * @param array $args The argument array
  * @return bool True if the email was sent.
  */
-function send_instant_preview( $args ) {
+function send_test( $args ) {
 	$args = shortcode_atts(
 		array(
 			'to'            => array( 'webcom@ucf.edu' ),
-			'subject'       => '**PREVIEW** Test Email **PREVIEW**',
+			'subject'       => '**TEST** Test Email **TEST**',
 			'from_friendly' => 'Coronavirus Site Admin',
 			'from'          => 'webcom@ucf.edu',
 			'body'          => 'Hello World',
@@ -83,13 +83,13 @@ function retrieve_email_markup() {
 
 
 /**
- * Sanitizes a preview recipient's email address to ensure
+ * Sanitizes a test recipient's email address to ensure
  * errant spaces are removed around the address, and that
  * consistent lowercase letters are used.
  *
  * @author Jo Dickson
  * @since 1.1.0
- * @param string $recipient_email A preview recipient's email address
+ * @param string $recipient_email A test recipient's email address
  * @return string Sanitized recipient's email address
  */
 function sanitize_recipient_email( $recipient_email ) {
@@ -113,8 +113,8 @@ function instant_send() {
 	);
 
 	// Get recipients
-	$preview_recipients_raw = get_field( 'preview_recipients', 'options_weekly_email' );
-	$recipients = explode( ',', $preview_recipients_raw ) ?: array();
+	$test_recipients_raw = get_field( 'preview_recipients', 'options_weekly_email' );
+	$recipients = explode( ',', $test_recipients_raw ) ?: array();
 	$recipients = array_unique( array_filter( array_map( __NAMESPACE__ . '\sanitize_recipient_email', $recipients ) ) );
 
 	if ( count( $recipients ) > 0 ) {
@@ -127,7 +127,7 @@ function instant_send() {
 	$from_friendly = get_option( CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_test_from_friendly' );
 
 	if ( $subject ) {
-		$args['subject'] = "*** PREVIEW *** $subject *** PREVIEW ***";
+		$args['subject'] = "**TEST** $subject **TEST**";
 	}
 
 	if ( $from_email && $from_friendly ) {
@@ -135,7 +135,7 @@ function instant_send() {
 		$args['from_friendly'] = $from_friendly;
 	}
 
-	$send = send_instant_preview( $args );
+	$send = send_test( $args );
 
 	return $send;
 }
