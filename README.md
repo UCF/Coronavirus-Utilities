@@ -15,6 +15,10 @@ Head over to the [Coronavirus Utilities wiki](https://github.com/UCF/Coronavirus
 
 ## Changelog ##
 
+### 1.1.1 ###
+Enhancements:
+* Modified email "preview" nomenclature throughout email builder tools to more clearly define them as "tests"
+
 ### 1.1.0 ###
 Enhancements:
 * Added the ability to send weekly email tests from the email builder directly.
