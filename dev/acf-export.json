@@ -511,7 +511,7 @@
     },
     {
         "key": "group_5f0e1af03b85b",
-        "title": "Preview Weekly Email",
+        "title": "Test Changes",
         "fields": [
             {
                 "key": "field_5f0e1af5b3f65",
@@ -526,7 +526,7 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "<p style=\"margin-top: 0;\">Click the button below to open the email in a new tab. This page must be updated in order to see the latest changes.<\/p>\r\n<a id=\"preview-in-browser\" class=\"button button-secondary button-large\" href=\"#\" target=\"_blank\">Preview Email<\/a>",
+                "message": "<p style=\"margin-top: 0;\">Click the button below to open the email in a new tab. This page must be updated in order to see the latest changes.<\/p>\r\n<a id=\"preview-in-browser\" class=\"button button-secondary button-large\" href=\"#\" target=\"_blank\">View Email<\/a>",
                 "new_lines": "wpautop",
                 "esc_html": 0
             },
@@ -543,13 +543,13 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "<p style=\"margin-top: 0;\">Click the button below to send a test of this email to the Preview Recipients defined below. <strong>Make sure you've saved your changes before clicking this button<\/strong> to ensure the latest email content is sent and that the preview recipient list is up-to-date.<\/p>\r\n<a href=\"#send-preview\" id=\"instant-send\" class=\"button button-primary button-large\">Send Test<\/a>",
+                "message": "<p style=\"margin-top: 0;\">Click the button below to send a test of this email to the Test Recipients defined below. <strong>Make sure you've saved your changes before clicking this button<\/strong> to ensure the latest email content is sent and that the test recipient list is up-to-date.<\/p>\r\n<a href=\"#send-test\" id=\"instant-send\" class=\"button button-primary button-large\">Send Test<\/a>",
                 "new_lines": "wpautop",
                 "esc_html": 0
             },
             {
                 "key": "field_5f494c975afcd",
-                "label": "Preview Recipients",
+                "label": "Test Recipients",
                 "name": "preview_recipients",
                 "type": "textarea",
                 "instructions": "Enter a comma-separated list of email addresses to send tests to.",
