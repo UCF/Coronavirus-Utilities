@@ -1,0 +1,8 @@
+{
+    "name": "ucf/coronavirus-utilities",
+    "description": "Utility and feature plugin for the UCF Coronavirus website.",
+    "type": "wordpress-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

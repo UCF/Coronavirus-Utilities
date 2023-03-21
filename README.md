@@ -15,6 +15,10 @@ Head over to the [Coronavirus Utilities wiki](https://github.com/UCF/Coronavirus
 
 ## Changelog ##
 
+### 1.1.2 ###
+Enhancements:
+* Added composer file.
+
 ### 1.1.1 ###
 Enhancements:
 * Modified email "preview" nomenclature throughout email builder tools to more clearly define them as "tests"
