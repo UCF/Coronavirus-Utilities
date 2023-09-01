@@ -134,7 +134,7 @@ add_filter( 'quicktags_settings', __NAMESPACE__ . '\acf_wysiwyg_quicktags_toolba
 function insert_instant_send_js() {
 	$menu_id        = OptionsWeeklyEmail\screen_id();
 	$current_screen = get_current_screen();
-	$gmucf_url      = get_option( CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_gmucf_url' );
+	$gmucf_url      = get_option( CORONAVIRUS_UTILS__CUSTOMIZER_PREFIX . 'email_gmucf_url' ) . '?' . time();
 
 	if ( ! $current_screen || $current_screen->id !== $menu_id ) return;
 ?>
