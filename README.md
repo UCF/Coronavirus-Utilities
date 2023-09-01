@@ -15,6 +15,10 @@ Head over to the [Coronavirus Utilities wiki](https://github.com/UCF/Coronavirus
 
 ## Changelog ##
 
+### 1.1.3 ###
+Bug Fixes:
+* Added cache busting for ICYMI email.
+
 ### 1.1.2 ###
 Enhancements:
 * Added composer file.

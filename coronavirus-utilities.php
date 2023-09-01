@@ -2,7 +2,7 @@
 /*
 Plugin Name: Coronavirus Utilities
 Description:  Utility and feature plugin for the UCF Coronavirus website.
-Version: 1.1.2
+Version: 1.1.3
 Author: UCF Web Communications
 License: GPL3
 GitHub Plugin URI: UCF/Coronavirus-Utilities
