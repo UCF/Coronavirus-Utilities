@@ -44,8 +44,8 @@ function screen_id() {
 function add_options_page() {
 	if ( function_exists( 'acf_add_options_page' ) ) {
 		acf_add_options_page( array(
-			'page_title' 	  => 'Weekly Email Builder',
-			'menu_title'	  => 'Weekly Email Builder',
+			'page_title' 	  => 'ICYMI Email Builder',
+			'menu_title'	  => 'ICYMI Email Builder',
 			'menu_slug' 	  => menu_slug(),
 			'post_id'         => 'options_weekly_email',
 			'capability'	  => 'administrator',
@@ -57,3 +57,21 @@ function add_options_page() {
 }
 
 add_action( 'acf/init', __NAMESPACE__ . '\add_options_page' );
+
+if ( function_exists( 'pantheon_clear_edge_paths' ) ) {
+	function on_options_page_save( $post_id, $menu_slug ) {
+		if ( $post_id === 'options_weekly_email' ) {
+			pantheon_clear_edge_paths(
+				[
+					'/icymi/',
+					'/icymi/mail/', // Clear the email template page
+					'/gmucf/icymi/',
+					'/gmucf/icymi/mail/', // Clear the cache for dev/test
+					'/wp-json/coronavirus-weekly-email/v1/options/' // Clear the options page
+				]
+			);
+		}
+	}
+
+	add_action( 'acf/options_page/save', __NAMESPACE__ . '\on_options_page_save', 10, 2 );
+}
