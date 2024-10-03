@@ -64,6 +64,7 @@ if ( function_exists( 'pantheon_clear_edge_paths' ) ) {
 			pantheon_clear_edge_paths(
 				[
 					'/icymi/mail/', // Clear the email template page
+					'/gmucf/icymi/mail/', // Clear the cache for dev/test
 					'/wp-json/coronavirus-weekly-email/v1/options/' // Clear the options page
 				]
 			);
