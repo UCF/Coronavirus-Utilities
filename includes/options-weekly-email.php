@@ -61,7 +61,12 @@ add_action( 'acf/init', __NAMESPACE__ . '\add_options_page' );
 if ( function_exists( 'pantheon_clear_edge_paths' ) ) {
 	function on_options_page_save( $post_id, $menu_slug ) {
 		if ( $post_id === 'options_weekly_email' ) {
-			pantheon_clear_edge_paths( [ '/icymi/mail/' ] );
+			pantheon_clear_edge_paths(
+				[
+					'/icymi/mail/', // Clear the email template page
+					'/wp-json/coronavirus-weekly-email/v1/options/' // Clear the options page
+				]
+			);
 		}
 	}
 
