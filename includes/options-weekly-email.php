@@ -63,7 +63,9 @@ if ( function_exists( 'pantheon_clear_edge_paths' ) ) {
 		if ( $post_id === 'options_weekly_email' ) {
 			pantheon_clear_edge_paths(
 				[
+					'/icymi/',
 					'/icymi/mail/', // Clear the email template page
+					'/gmucf/icymi/',
 					'/gmucf/icymi/mail/', // Clear the cache for dev/test
 					'/wp-json/coronavirus-weekly-email/v1/options/' // Clear the options page
 				]
