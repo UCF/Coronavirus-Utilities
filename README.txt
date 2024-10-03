@@ -2,7 +2,7 @@
 Contributors: ucfwebcom
 Requires at least: 5.3
 Tested up to: 6.1
-Stable tag: 1.1.3
+Stable tag: 1.2.0
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html

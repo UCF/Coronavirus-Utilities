@@ -15,6 +15,11 @@ Head over to the [Coronavirus Utilities wiki](https://github.com/UCF/Coronavirus
 
 ## Changelog ##
 
+### 1.2.0 ###
+Enhancements:
+* Added cache clearing logic for the ICYMI emails
+* Changed the menu name of the email builder
+
 ### 1.1.3 ###
 Bug Fixes:
 * Added cache busting for ICYMI email.
